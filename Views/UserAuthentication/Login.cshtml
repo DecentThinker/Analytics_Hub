@@ -1,0 +1,43 @@
+﻿@model Analytics_Hub.Models.DTO.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+@Html.ValidationSummary()
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 center-block">
+            <h3>Login</h3>
+            <form asp-action="Login" method="post">
+                <fieldset>
+                <div class="form-group">
+                    <label asp-for="Username" class="form-label mt-4"><b>Username</b></label>
+                    <input type="text" asp-for="Username" class="form-control thicker-border border-color" placeholder="Username" >
+                    <div class="msg">
+                        <span class="err" asp-validation-for="Username"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label mt-4"><b>Password</b></label>
+                        <input type="password" asp-for="Password" class="form-control thicker-border border-color" placeholder="Password">
+                    <div class="msg">
+                        <span asp-validation-for="Password" class="err"></span>
+                    </div>
+                </div>
+            
+
+                @if(TempData["msg"]!=null)
+                {
+                    <div class="msg">@TempData["msg"]</div>
+                }
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary">Login</button><br />
+                </div>
+        
+                <a asp-area="" asp-controller="UserAuthentication" asp-action="Registration">Not a user? Signup</a>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
